@@ -11,6 +11,7 @@
   "dependencies": {
     "@chakra-ui/icons": "^2.1.1",
     "@chakra-ui/react": "^2.8.1",
+    "@coral-xyz/anchor": "^0.28.1-beta.2",
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "@monaco-protocol/client": "^2.0.0",
