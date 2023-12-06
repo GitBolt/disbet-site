@@ -41,7 +41,21 @@ const Sign = function SignPage(props: Props) {
     try {
       let res
       if (data.transaction_type === 'placeBet') {
-        res = await placeBet(data.marketPk, data.marketPk, data.amount, wallet as any);
+        res = await placeBet(data.marketPk, data.type, data.amount, wallet as any);
+
+        const saveres = await fetch("/saveHistory", {
+          method: "POST",
+          body: JSON.stringify({
+            id: props.data.id,
+            type: props.data.type,
+            market_address: props.data.marketPk,
+            stake_amount: props.data.amount
+          }),
+          headers: {
+            'Content-Type': "application/json"
+          }
+        })
+        console.log(saveres)
       } else if (data.transaction_type === 'cancelBet') {
         res = await cancelBet(data.betAddress, wallet as any);
       } else {
