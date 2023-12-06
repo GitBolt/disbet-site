@@ -15,6 +15,7 @@ import { cancelBet, placeBet } from '../../../utils/protocol';
 import { Navbar } from '../../../components/Navbar';
 import { CancelBetView } from '../../../components/CancelBetView';
 import { PlaceBetView } from '../../../components/PlaceBetView';
+import axios from 'axios';
 
 interface Props {
   data: any;
@@ -42,19 +43,14 @@ const Sign = function SignPage(props: Props) {
       let res
       if (data.transaction_type === 'placeBet') {
         res = await placeBet(data.marketPk, data.type, data.amount, wallet as any);
-        console.log("SAVING HISTORY")
-        const saveres = await fetch("/save", {
-          method: "POST",
-          body: JSON.stringify({
-            id: props.data.id,
-            type: props.data.type,
-            market_address: props.data.marketPk,
-            stake_amount: props.data.amount
-          }),
-          headers: {
-            'Content-Type': "application/json"
-          }
+        console.log("SAVING HISTORY2")
+        const saveres = await axios.post("/save", JSON.stringify({
+          id: props.data.id,
+          type: props.data.type,
+          market_address: props.data.marketPk,
+          stake_amount: props.data.amount
         })
+        )
         console.log(saveres)
       } else if (data.transaction_type === 'cancelBet') {
         res = await cancelBet(data.betAddress, wallet as any);

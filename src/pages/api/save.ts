@@ -6,17 +6,11 @@ import mongoose from 'mongoose';
 import connectDB from '../../../utils/db';
 import { Bet, Wallet } from '../../../utils/mongoSchema';
 
-connectDB();
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-    if (req.method !== 'POST') {
-        res.setHeader('Allow', ['POST']);
-        return res.status(405).end(`Method ${req.method} Not Allowed`);
-    }
-
     try {
+        await connectDB();
         const user = await Wallet.findOne({ discord_id: req.body.id });
-
         if (!user) {
             return res.status(400).json({ error: "User id is not valid" });
         }
