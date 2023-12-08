@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 
 import connectDB from '@/utils/db';
-import { Bet, Wallet } from '@/utils/mongoSchema';
+import { Bet, Wallet } from '@/utils/schema';
 
 connectDB();
 
