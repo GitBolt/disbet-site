@@ -2,7 +2,7 @@
 
 import mongoose from 'mongoose';
 
-const MONGODB_URI = process.env.NEXT_PUBLIC_MONGODB as string
+const MONGODB_URI = process.env.NEXT_PUBLIC_DB as string
 
 const connectDB = async () => {
   try {

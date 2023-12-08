@@ -1,15 +1,15 @@
-// pages/api/medications.ts
-
 import type { NextApiRequest, NextApiResponse } from 'next';
-import mongoose from 'mongoose';
 
-import connectDB from '../../../utils/db';
-import { Bet, Wallet } from '../../../utils/mongoSchema';
+import connectDB from '@/utils/db';
+import { Bet, Wallet } from '@/utils/mongoSchema';
 
+connectDB();
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
     try {
-        await connectDB();
+        if (!req.body || !req.body.id) {
+            return res.status(400).json({ error: "No data provided" })
+        }
         const user = await Wallet.findOne({ discord_id: req.body.id });
         if (!user) {
             return res.status(400).json({ error: "User id is not valid" });

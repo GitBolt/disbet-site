@@ -3,7 +3,6 @@ import { useRouter } from 'next/router';
 import Head from 'next/head'
 import {
   useToast,
-  Divider,
   Button,
   Text,
   Box,
@@ -11,10 +10,10 @@ import {
   VStack,
 } from '@chakra-ui/react';
 import { useAnchorWallet } from '@solana/wallet-adapter-react';
-import { cancelBet, placeBet } from '../../../utils/protocol';
-import { Navbar } from '../../../components/Navbar';
-import { CancelBetView } from '../../../components/CancelBetView';
-import { PlaceBetView } from '../../../components/PlaceBetView';
+import { cancelBet, placeBet } from '../../utils/protocol';
+import { Navbar } from '@/components/Navbar';
+import { CancelBetView } from '@/components/CancelBetView';
+import { PlaceBetView } from '@/components/PlaceBetView';
 import axios from 'axios';
 
 interface Props {

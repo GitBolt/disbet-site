@@ -1,6 +1,6 @@
 import mongoose from 'mongoose'
 
-const WalletScheme = new mongoose.Schema({
+const WalletSchema = new mongoose.Schema({
     custodial: {
         type: Boolean,
         required: true,
@@ -23,7 +23,7 @@ const WalletScheme = new mongoose.Schema({
     },
 })
 
-const Wallet = mongoose.model('Wallet', WalletScheme)
+const Wallet = mongoose.model('Wallet', WalletSchema)
 
 const BetScheme = new mongoose.Schema({
     stake_amount: {
@@ -54,4 +54,4 @@ const BetScheme = new mongoose.Schema({
 const Bet = mongoose.model('Bet', BetScheme)
 
 
-export { Wallet, Bet, WalletScheme }
+export { Wallet, Bet, WalletSchema }
