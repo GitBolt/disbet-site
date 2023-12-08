@@ -43,7 +43,7 @@ const Sign = function SignPage(props: Props) {
       if (data.transaction_type === 'placeBet') {
         res = await placeBet(data.marketPk, data.type, data.amount, wallet as any);
         console.log("SAVING HISTORY2")
-        const saveres = await axios.post("/save", JSON.stringify({
+        const saveres = await axios.post("/api/save", JSON.stringify({
           id: props.data.id,
           type: props.data.type,
           market_address: props.data.marketPk,
