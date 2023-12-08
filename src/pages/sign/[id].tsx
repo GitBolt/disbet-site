@@ -41,7 +41,7 @@ const Sign = function SignPage(props: Props) {
     try {
       let res
       if (data.transaction_type === 'placeBet') {
-        // res = await placeBet(data.marketPk, data.type, data.amount, wallet as any);
+        res = await placeBet(data.marketPk, data.type, data.amount, wallet as any);
         const saveres = await fetch("/api/save", {
           method: "POST",
           body: JSON.stringify({
